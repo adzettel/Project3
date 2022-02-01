@@ -77,8 +77,8 @@ constexpr const char* const Card::SUIT_DIAMONDS;
   bool Card::is_right_bower(const std::string &trump) const{
     assert(trump == "Spades" || trump == "Clubs" || trump == "Diamonds" || trump == "Hearts");
     if (rank != "Jack") return false;
-    if (suit == trump) return false;
-    // test
+    if (suit == trump) return true;
+    
     else return false;
   }
 
@@ -131,10 +131,18 @@ bool operator!=(const Card &lhs, const Card &rhs);
 
 //REQUIRES suit is a valid suit
 //EFFECTS returns the next suit, which is the suit of the same color
-std::string Suit_next(const std::string &suit);
+std::string Suit_next(const std::string &suit){
+  assert(suit == "Spades" || suit == "Clubs" || suit == "Diamonds" || suit == "Hearts");
+  if (suit == "Hearts") return "Diamonds";
+  if (suit == "Diamonds") return "Hearts";
+  if (suit == "Clubs") return "Spades";
+  if (suit == "Spades") return "Clubs";
+}
 
 //EFFECTS Prints Card to stream, for example "Two of Spades"
-std::ostream & operator<<(std::ostream &os, const Card &card);
+std::ostream & operator<<(std::ostream &os, const Card &card){
+  
+}
 
 //REQUIRES trump is a valid suit
 //EFFECTS Returns true if a is lower value than b.  Uses trump to determine
