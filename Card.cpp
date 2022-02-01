@@ -71,14 +71,15 @@ bool Card::is_face() const{
   else return false;
 }
 
-//REQUIRES trump is a valid suit
-//EFFECTS Returns true if card is the Jack of the trump suit
-bool Card::is_right_bower(const std::string &trump) const{
-  assert(trump == "Spades" || trump == "Clubs" || trump == "Diamonds" || trump == "Hearts");
-  if (rank != "Jack") return false;
-  if (suit == trump) return true;
-  else return false;
-}
+  //REQUIRES trump is a valid suit
+  //EFFECTS Returns true if card is the Jack of the trump suit
+  bool Card::is_right_bower(const std::string &trump) const{
+    assert(trump == "Spades" || trump == "Clubs" || trump == "Diamonds" || trump == "Hearts");
+    if (rank != "Jack") return false;
+    if (suit == trump) return true;
+    
+    else return false;
+  }
 
 //REQUIRES trump is a valid suit
 //EFFECTS Returns true if card is the Jack of the next suit
@@ -99,9 +100,8 @@ bool Card::is_trump(const std::string &trump) const{
 }
 
 
-//OPERATOR OVERLOADING//
 
-int find_weight(const Card &lhs) {
+int find_rank_weight(const Card &lhs) {
   for (int i = 0; i < 13; i++)
   {
     if (RANK_NAMES_BY_WEIGHT[i] == lhs.get_rank()) {
@@ -112,53 +112,101 @@ int find_weight(const Card &lhs) {
   return -1; // throw error
 }
 
+int find_suit_weight(const Card &lhs) {
+  for (int i = 0; i < 4; i++)
+  {
+    if (SUIT_NAMES_BY_WEIGHT[i] == lhs.get_suit()) {
+      return i;
+    }
+  }
+  throw "not found rank";
+  return -1; // throw error
+}
+
+
 //EFFECTS Returns true if lhs is lower value than rhs.
 //  Does not consider trump.
 bool operator<(const Card &lhs, const Card &rhs){
-  return find_weight(lhs) < find_weight(rhs);
+  return find_rank_weight(lhs) < find_rank_weight(rhs);
 }
 
 //EFFECTS Returns true if lhs is lower value than rhs or the same card as rhs.
 //  Does not consider trump.
 bool operator<=(const Card &lhs, const Card &rhs) {
-  return find_weight(lhs) <= find_weight(rhs);
+  return find_rank_weight(lhs) <= find_rank_weight(rhs);
 };
 
 //EFFECTS Returns true if lhs is higher value than rhs.
 //  Does not consider trump.
 bool operator>(const Card &lhs, const Card &rhs) {
-  return find_weight(lhs) > find_weight(rhs);
+  return find_rank_weight(lhs) > find_rank_weight(rhs);
 };
 
 //EFFECTS Returns true if lhs is higher value than rhs or the same card as rhs.
 //  Does not consider trump.
 bool operator>=(const Card &lhs, const Card &rhs) {
-  return find_weight(lhs) >= find_weight(rhs);
+  return find_rank_weight(lhs) >= find_rank_weight(rhs);
 };
 
 //EFFECTS Returns true if lhs is same card as rhs.
 //  Does not consider trump.
 bool operator==(const Card &lhs, const Card &rhs) {
-  return find_weight(lhs) == find_weight(rhs) && lhs.get_suit() == rhs.get_suit();
+  return find_rank_weight(lhs) == find_rank_weight(rhs) && lhs.get_suit() == rhs.get_suit();
 };
 
 //EFFECTS Returns true if lhs is not the same card as rhs.
 //  Does not consider trump.
 bool operator!=(const Card &lhs, const Card &rhs) {
-  return !(find_weight(lhs) == find_weight(rhs) && lhs.get_suit() == rhs.get_suit());
+  return !(find_rank_weight(lhs) == find_rank_weight(rhs) && lhs.get_suit() == rhs.get_suit());
 };
 
 //REQUIRES suit is a valid suit
 //EFFECTS returns the next suit, which is the suit of the same color
-std::string Suit_next(const std::string &suit);
+std::string Suit_next(const std::string &suit){
+  assert(suit == "Spades" || suit == "Clubs" || suit == "Diamonds" || suit == "Hearts");
+  if (suit == "Hearts") return "Diamonds";
+  if (suit == "Diamonds") return "Hearts";
+  if (suit == "Clubs") return "Spades";
+  if (suit == "Spades") return "Clubs";
+}
 
 //EFFECTS Prints Card to stream, for example "Two of Spades"
-std::ostream & operator<<(std::ostream &os, const Card &card);
+std::ostream & operator<<(std::ostream &os, const Card &card){
+  os << card.get_rank() << " of " << card.get_suit();
+  return os; 
+}
 
 //REQUIRES trump is a valid suit
 //EFFECTS Returns true if a is lower value than b.  Uses trump to determine
 // order, as described in the spec.
-bool Card_less(const Card &a, const Card &b, const std::string &trump);
+bool Card_less(const Card &a, const Card &b, const std::string &trump){
+
+
+  if (a.get_suit() == trump && b.get_suit() != trump) return false;
+  if (a.get_suit() != trump && b.get_suit() == trump) return true;
+
+  if (b.is_right_bower(trump)) return true;
+  if (a.is_right_bower(trump)) return false;
+  if (b.is_left_bower(trump) && a.is_left_bower(trump) == false) return true;
+  if (a.is_left_bower(trump)) return true;
+
+  int aRankWeight = find_rank_weight(a);
+  int bRankWeight = find_rank_weight(b);
+  int aSuitWeight = find_suit_weight(a);
+  int bSuitWeight = find_suit_weight(b);
+
+  if (a.is_trump(trump) && b.is_trump(trump)){
+    if (aRankWeight > bRankWeight) return false;
+    if (bRankWeight > aRankWeight) return true;
+    if (aRankWeight == bRankWeight){
+      return (bSuitWeight > aSuitWeight);
+    }
+  }
+
+
+  
+
+}
 
 //REQUIRES trump is a valid suit
 //EFFECTS Returns true if a is lower value than b.  Uses both the trump suit
