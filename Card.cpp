@@ -35,7 +35,6 @@ constexpr const char* const Card::SUIT_DIAMONDS;
   Card::Card(){
     rank = "Two";
     suit = "Spades";
-
   }
 
   Card::Card(const std::string &rank_in, const std::string &suit_in){
@@ -102,31 +101,52 @@ constexpr const char* const Card::SUIT_DIAMONDS;
 
 //OPERATOR OVERLOADING//
 
+int find_weight(const Card &lhs) {
+  for (int i = 0; i < 13; i++)
+  {
+    if (RANK_NAMES_BY_WEIGHT[i] == lhs.get_rank()) {
+      return i;
+    }
+  }
+  throw "not found rank";
+  return -1; // throw error
+}
+
 //EFFECTS Returns true if lhs is lower value than rhs.
 //  Does not consider trump.
 bool operator<(const Card &lhs, const Card &rhs){
-  
+  return find_weight(lhs) < find_weight(rhs);
 }
 
 //EFFECTS Returns true if lhs is lower value than rhs or the same card as rhs.
 //  Does not consider trump.
-bool operator<=(const Card &lhs, const Card &rhs);
+bool operator<=(const Card &lhs, const Card &rhs) {
+  return find_weight(lhs) <= find_weight(rhs);
+};
 
 //EFFECTS Returns true if lhs is higher value than rhs.
 //  Does not consider trump.
-bool operator>(const Card &lhs, const Card &rhs);
+bool operator>(const Card &lhs, const Card &rhs) {
+  return find_weight(lhs) > find_weight(rhs);
+};
 
 //EFFECTS Returns true if lhs is higher value than rhs or the same card as rhs.
 //  Does not consider trump.
-bool operator>=(const Card &lhs, const Card &rhs);
+bool operator>=(const Card &lhs, const Card &rhs) {
+  return find_weight(lhs) >= find_weight(rhs);
+};
 
 //EFFECTS Returns true if lhs is same card as rhs.
 //  Does not consider trump.
-bool operator==(const Card &lhs, const Card &rhs);
+bool operator==(const Card &lhs, const Card &rhs) {
+  return find_weight(lhs) == find_weight(rhs) && lhs.get_suit() == rhs.get_suit();
+};
 
 //EFFECTS Returns true if lhs is not the same card as rhs.
 //  Does not consider trump.
-bool operator!=(const Card &lhs, const Card &rhs);
+bool operator!=(const Card &lhs, const Card &rhs) {
+  return !(find_weight(lhs) == find_weight(rhs) && lhs.get_suit() == rhs.get_suit());
+};
 
 //REQUIRES suit is a valid suit
 //EFFECTS returns the next suit, which is the suit of the same color
