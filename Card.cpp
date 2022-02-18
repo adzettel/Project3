@@ -88,7 +88,7 @@ bool Card::is_face() const{
   bool Card::is_left_bower(const std::string &trump) const{
     assert(trump == "Spades" || trump == "Clubs" || trump == "Diamonds" || trump == "Hearts");
     if (rank != "Jack") return false;
-    if (rank == trump) return false;
+    if (suit == trump) return false;
     if (this->get_suit(trump) == trump) return true;
     else return false;
   }
@@ -188,13 +188,13 @@ bool Card_less(const Card &a, const Card &b, const std::string &trump){
 
 //trump against non trump comparison
   if (a.is_trump(trump) && !(b.is_trump(trump))) return false;
-  if (a.is_trump(trump) && !(b.is_trump(trump))) return true;
+  if (!a.is_trump(trump) && (b.is_trump(trump))) return true;
 
 //bower comparison
   if (b.is_right_bower(trump)) return true;
   if (a.is_right_bower(trump)) return false;
   if (b.is_left_bower(trump) && !(a.is_left_bower(trump))) return true;
-  if (a.is_left_bower(trump)) return true;
+  if (a.is_left_bower(trump)) return false;
 
 //regular comparison
   int aRankWeight = find_rank_weight(a);
@@ -218,13 +218,13 @@ const std::string led_suit = led_card.get_suit();
 
 //trump against non trump comparison
   if (a.is_trump(trump) && !(b.is_trump(trump))) return false;
-  if (a.is_trump(trump) && !(b.is_trump(trump))) return true;
+  if (!a.is_trump(trump) && (b.is_trump(trump))) return true;
 
 //bower comparison
   if (b.is_right_bower(trump)) return true;
   if (a.is_right_bower(trump)) return false;
   if (b.is_left_bower(trump) && !(a.is_left_bower(trump))) return true;
-  if (a.is_left_bower(trump)) return true;
+  if (a.is_left_bower(trump)) return false;
 
 //led suit comparison
   if (a.get_suit() == led_suit && b.get_suit() != led_suit) return false;
