@@ -88,7 +88,7 @@ bool Card::is_face() const{
   bool Card::is_left_bower(const std::string &trump) const{
     assert(trump == "Spades" || trump == "Clubs" || trump == "Diamonds" || trump == "Hearts");
     if (rank != "Jack") return false;
-    if (rank == trump) return false;
+    if (suit == trump) return false;
     if (this->get_suit(trump) == trump) return true;
     else return false;
   }
