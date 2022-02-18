@@ -4,6 +4,7 @@
 #include "unit_test_framework.h"
 #include <iostream>
 
+
 using namespace std;
 
 
@@ -62,7 +63,12 @@ TEST(test_comparisons){
     ASSERT_TRUE(Card_less(aceClubs, twoSpades, twoSpades, Card::SUIT_DIAMONDS));
 }
 
+TEST(test_print){
+    ostringstream oss;
+    Card aceSpades(Card::RANK_ACE, Card::SUIT_SPADES);
+    oss << aceSpades;
+    ASSERT_EQUAL(oss.str(),"Ace of Spades");
 
-// Add more test cases here
+}
 
 TEST_MAIN()
