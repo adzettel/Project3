@@ -37,10 +37,8 @@ Card::Card(){
   suit = "Spades";
 }
 
-Card::Card(const std::string &rank_in, const std::string &suit_in){
-    rank = rank_in;
-    suit = suit_in;
-}
+Card::Card(const std::string &rank_in, const std::string &suit_in)
+  :rank(rank_in),suit(suit_in){}
 
 //EFFECTS Returns the rank
 std::string Card::get_rank() const{
@@ -56,14 +54,14 @@ std::string Card::get_suit() const{
   //EFFECTS Returns the suit
   //HINT: the left bower is the trump suit!
   std::string Card::get_suit(const std::string &trump) const{
-      if(rank == "Jack" && suit != trump){
-        if(trump == "Diamonds" && suit == "Hearts") return trump;
-        if(trump == "Hearts" && suit == "Diamonds") return trump;
-        if(trump == "Clubs" && suit == "Spades") return trump;
-        if(trump == "Spades" && suit == "Clubs") return trump;
-        else return suit;
+      if(rank == "Jack" && this->suit != trump){
+        if(trump == "Diamonds" && this->suit == "Hearts") return trump;
+        if(trump == "Hearts" && this->suit == "Diamonds") return trump;
+        if(trump == "Clubs" && this->suit == "Spades") return trump;
+        if(trump == "Spades" && this->suit == "Clubs") return trump;
+        else return this->suit;
       }
-      else return suit;
+      else return this->suit;
   }
 
 //EFFECTS Returns true if card is a face card (Jack, Queen, King or Ace)
