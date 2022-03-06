@@ -66,7 +66,8 @@ std::string Card::get_suit() const{
 
 //EFFECTS Returns true if card is a face card (Jack, Queen, King or Ace)
 bool Card::is_face() const{
-  if (rank == "Jack" || rank == "Queen" || rank == "King" || rank == "Ace")
+  if (rank == "Jack" || rank == "Queen" || 
+  rank == "King" || rank == "Ace")
       return true;
   else return false;
 }
@@ -74,7 +75,8 @@ bool Card::is_face() const{
   //REQUIRES trump is a valid suit
   //EFFECTS Returns true if card is the Jack of the trump suit
   bool Card::is_right_bower(const std::string &trump) const{
-    assert(trump == "Spades" || trump == "Clubs" || trump == "Diamonds" || trump == "Hearts");
+    assert(trump == "Spades" || trump == "Clubs" || 
+    trump == "Diamonds" || trump == "Hearts");
     if (rank != "Jack") return false;
     if (suit == trump) return true;
     
@@ -84,7 +86,8 @@ bool Card::is_face() const{
   //REQUIRES trump is a valid suit
   //EFFECTS Returns true if card is the Jack of the next suit
   bool Card::is_left_bower(const std::string &trump) const{
-    assert(trump == "Spades" || trump == "Clubs" || trump == "Diamonds" || trump == "Hearts");
+    assert(trump == "Spades" || trump == "Clubs" || 
+    trump == "Diamonds" || trump == "Hearts");
     if (rank != "Jack") return false;
     if (suit == trump) return false;
     if (this->get_suit(trump) == trump) return true;
@@ -95,7 +98,8 @@ bool Card::is_face() const{
   //EFFECTS Returns true if the card is a trump card.  All cards of the trump
   // suit are trump cards.  The left bower is also a trump card.
   bool Card::is_trump(const std::string &trump) const{
-    assert(trump == "Spades" || trump == "Clubs" || trump == "Diamonds" || trump == "Hearts");
+    assert(trump == "Spades" || trump == "Clubs" || 
+    trump == "Diamonds" || trump == "Hearts");
     if (suit == trump) return true;
     if (this->is_left_bower(trump) == true) return true;
     else return false;
@@ -153,19 +157,22 @@ bool operator>=(const Card &lhs, const Card &rhs) {
 //EFFECTS Returns true if lhs is same card as rhs.
 //  Does not consider trump.
 bool operator==(const Card &lhs, const Card &rhs) {
-  return find_rank_weight(lhs) == find_rank_weight(rhs) && lhs.get_suit() == rhs.get_suit();
+  return (find_rank_weight(lhs) == find_rank_weight(rhs)) &&
+   (lhs.get_suit() == rhs.get_suit());
 }
 
 //EFFECTS Returns true if lhs is not the same card as rhs.
 //  Does not consider trump.
 bool operator!=(const Card &lhs, const Card &rhs) {
-  return !(find_rank_weight(lhs) == find_rank_weight(rhs) && lhs.get_suit() == rhs.get_suit());
+  return !(find_rank_weight(lhs) == find_rank_weight(rhs) 
+  && lhs.get_suit() == rhs.get_suit());
 }
 
 //REQUIRES suit is a valid suit
 //EFFECTS returns the next suit, which is the suit of the same color
 std::string Suit_next(const std::string &suit){
-  assert(suit == "Spades" || suit == "Clubs" || suit == "Diamonds" || suit == "Hearts");
+  assert(suit == "Spades" || suit == "Clubs" || 
+  suit == "Diamonds" || suit == "Hearts");
   if (suit == "Hearts") return "Diamonds";
   if (suit == "Diamonds") return "Hearts";
   if (suit == "Clubs") return "Spades";
@@ -195,14 +202,9 @@ bool Card_less(const Card &a, const Card &b, const std::string &trump){
   if (a.is_left_bower(trump)) return false;
 
 //regular comparison
-  int aRankWeight = find_rank_weight(a);
-  int bRankWeight = find_rank_weight(b);
-  int aSuitWeight = find_suit_weight(a);
-  int bSuitWeight = find_suit_weight(b);
-
-  if (aRankWeight > bRankWeight) return false;
-  if (bRankWeight > aRankWeight) return true;
-  else return (bSuitWeight > aSuitWeight);
+  if (find_rank_weight(a) > find_rank_weight(b)) return false;
+  if (find_rank_weight(b) > find_rank_weight(a)) return true;
+  else return (find_suit_weight(b) > find_suit_weight(a));
   
 
 }
@@ -228,16 +230,11 @@ const std::string led_suit = led_card.get_suit();
   if (a.get_suit() == led_suit && b.get_suit() != led_suit) return false;
   if (a.get_suit() != led_suit && b.get_suit() == led_suit) return true;
 
-
 //regular comparison - accounts for both trump, both led suit, and both non lead suit
-  int aRankWeight = find_rank_weight(a);
-  int bRankWeight = find_rank_weight(b);
-  int aSuitWeight = find_suit_weight(a);
-  int bSuitWeight = find_suit_weight(b);
-
-  if (aRankWeight > bRankWeight) return false;
-  if (bRankWeight > aRankWeight) return true;
-  else return (bSuitWeight > aSuitWeight);
+   if (find_rank_weight(a) > find_rank_weight(b)) return false;
+  if (find_rank_weight(b) > find_rank_weight(a)) return true;
+  else return (find_suit_weight(b) > find_suit_weight(a));
+  
   
 }
 

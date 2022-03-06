@@ -1,3 +1,4 @@
+// Project UID 1d9f47bfc76643019cfbf037641defe1
 #include "Pack.h"
 #include "Card.h"
 #include "Player.h"
@@ -11,19 +12,32 @@ using namespace std;
 
 class Game{
     public:
-    void setupGame(char *argv[]); //sets up players, points to win, and shuffle mode
-    bool setPack(char* argv[]); //sets up deck
-    void deal(); //deals cards in deal order: 3-2-3-2 2-3-2-3. Calls setDealOrder()
-    void setDealOrder(); //establishes deal order based on current dealer
-    void shuffle7(); //calls deck.shuffle() 7 times
-    string makeTrump(); //returns what currentTrump is
-    void doTrick(); //has players play their cards and compares what the best card is to who played it.
-    void setTrickOrder(Player *winner); //changes deal order based on winner of trick; used only during doRound
-    void doRound(); //does a round: includes deal(), makeTrump(), and doTrick(); resets control variables
-    int checkForWin(); //returns 1 if t1 wins, 2 if t2 wins, and 0 if no one has won
+    //sets up players, points to win, and shuffle mode
+    void setupGame(char *argv[]); 
+     //sets up deck
+    bool setPack(char* argv[]);
+     //deals cards in deal order: 3-2-3-2 2-3-2-3.
+    void deal();
+    //establishes deal order based on current dealer
+    void setDealOrder(); 
+     //calls deck.shuffle() 7 times
+    void shuffle7();
+//returns what currentTrump is
+    string makeTrump(); 
+    //has players play their cards; gets best player
+    void doTrick(); 
+    //used in doTrick to add points
+    void trickWinner(int n); 
+    //changes deal order based on winner of trick
+    void setTrickOrder(Player *winner); 
+    //does a round: resets control variables
+    void doRound(); 
+     //returns 1 if t1 wins, 2 if t2 wins, 0 if no win
+    int checkForWin();
+    
     
     private: 
-    //main variables - are not reset
+    //main variables - are not reset after each round
     Pack deck;
     Player* p0;
     Player* p1;
@@ -44,10 +58,11 @@ class Game{
     bool t2trump;
     int t1Tricks = 0;
     int t2Tricks = 0;
-    vector<Player*> dealOrder = {p1,p2,p3,p0}; //determines deal AND play order
+     //determines deal AND play order
+    vector<Player*> dealOrder = {p1,p2,p3,p0};
 };
-
-bool failedPrelimChecks(int argc, char *argv[]); //returns true if cmdline argument format is incorrect
+//returns true if cmdline argument format is incorrect
+bool failedPrelimChecks(int argc, char *argv[]); 
 
 int main(int argc, char *argv[]){
 
@@ -58,16 +73,26 @@ int main(int argc, char *argv[]){
      return -1;
     }
 
+    for (int i = 0; i < argc; i++){
+        cout << argv[i] << " ";
+    }
+    cout << endl;
     Game game;
     if (!game.setPack(argv)) { //reads in pack
         std::cout << "Error opening " << argv[1] << endl;
         return -1;
     }
     game.setupGame(argv); //reads in players 
-
-    while(game.checkForWin()==0) {game.doRound();} //does game until there is a winner
-    if (game.checkForWin() == 1) cout << argv[4] << " and " << argv[8] << " win!" << endl << endl;
-    if (game.checkForWin() == 2) cout << argv[6] << " and " << argv[10] << " win!" << endl << endl;
+    //does game until there is a winner
+    while(game.checkForWin()==0) {game.doRound();} 
+    if (game.checkForWin() == 1) {
+        cout << argv[4] << " and " << argv[8];
+        cout << " win!" << endl << endl;
+        }
+    if (game.checkForWin() == 2) {
+        cout << argv[6] << " and " << argv[10];
+        cout << " win!" << endl << endl;
+        }
 }
 
 void Game::setupGame(char* argv[]){
@@ -175,40 +200,23 @@ void Game::doTrick(){
 
     while(pile.size() > 1){
         for (int i = 1; i < (int)pile.size() ; ++i){
-            if(Card_less(pile[0],pile[i],c1,currentTrump)){
-                pile.erase(pile.begin());
-            }
-            else {
-                pile.erase(pile.begin()+i);
-            }
+            if(Card_less(pile[0],pile[i],c1,currentTrump)) pile.erase(pile.begin());
+            else pile.erase(pile.begin()+i);
         }
     }
 
     bestCard = pile[0];
-    if (bestCard == c1) {
-        cout << *dealOrder[0] << " takes the trick" << endl << endl;
-        if (dealOrder[0] == p0 || dealOrder[0] == p2) t1Tricks++;
+    if (bestCard == c1) trickWinner(0);
+    else if (bestCard == c2) trickWinner(1);
+    else if (bestCard == c3) trickWinner(2);
+    else if (bestCard == c4) trickWinner(3);
+}
+
+void Game::trickWinner(int n){
+    cout << *dealOrder[n] << " takes the trick" << endl << endl;
+        if (dealOrder[n] == p0 || dealOrder[n] == p2) t1Tricks++;
         else t2Tricks++;
-        this->setTrickOrder(dealOrder[0]);
-    }
-    else if (bestCard == c2) {
-        cout << *dealOrder[1] << " takes the trick" << endl << endl;
-        if (dealOrder[1] == p0 || dealOrder[1] == p2) t1Tricks++;
-        else t2Tricks++;
-        this->setTrickOrder(dealOrder[1]);
-    }
-    else if (bestCard == c3) {
-        cout << *dealOrder[2] << " takes the trick" << endl << endl;
-        if (dealOrder[2] == p0 || dealOrder[2] == p2) t1Tricks++;
-        else t2Tricks++;
-        this->setTrickOrder(dealOrder[2]);
-    }
-    else if (bestCard == c4) {
-        cout << *dealOrder[3] << " takes the trick" << endl << endl;
-        if (dealOrder[3] == p0 || dealOrder[3] == p2) t1Tricks++;
-        else t2Tricks++;
-        this->setTrickOrder(dealOrder[3]);
-    }
+        this->setTrickOrder(dealOrder[n]);
 }
 
 void Game::setTrickOrder(Player *winner){
@@ -270,13 +278,19 @@ int Game::checkForWin(){
 }
 
 bool failedPrelimChecks(int argc, char *argv[]){
-    if (argc != 12) return true; //has enough arguments
-    if (stoi(argv[3]) < 1 || stoi(argv[3]) > 100) return true; //proper amount of points to win
+    //has enough arguments
+    if (argc != 12) return true; 
+    //proper amount of points to win
+    if (stoi(argv[3]) < 1 || stoi(argv[3]) > 100) return true; 
     string shuffleMode = argv[2];
-    if(shuffleMode != "noshuffle" && shuffleMode != "shuffle") return true; //either shuffle or noshuffle
-    for (int i = 5; i < 11; i+=2){ //player type either simple or human
+    //either shuffle or noshuffle
+    if(shuffleMode != "noshuffle" && shuffleMode != "shuffle") return true;
+    //player type either simple or human 
+    for (int i = 5; i < 11; i+=2){ 
         string ptype = argv[i];
         if (ptype != "Simple" && ptype != "Human") return true;
     }
     return false;
 }
+
+

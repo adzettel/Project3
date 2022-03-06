@@ -1,463 +1,464 @@
-./euchre.exe pack.in noshuffle 3 Ivan Human Judea Human Kunle Human Liskov Human < euchre_test50.in
+./euchre.exe pack.in shuffle 10 Edsger Simple Fran Simple Gabriel Simple Herb Simple 
 Hand 0
-Ivan deals
-Jack of Diamonds turned up
-Human player Judea's hand: [0] Nine of Spades
-Human player Judea's hand: [1] Ten of Spades
-Human player Judea's hand: [2] Jack of Spades
-Human player Judea's hand: [3] King of Hearts
-Human player Judea's hand: [4] Ace of Hearts
-Human player Judea, please enter a suit, or "pass":
-Judea passes
-Human player Kunle's hand: [0] Nine of Clubs
-Human player Kunle's hand: [1] Ten of Clubs
-Human player Kunle's hand: [2] Jack of Clubs
-Human player Kunle's hand: [3] Queen of Spades
-Human player Kunle's hand: [4] King of Spades
-Human player Kunle, please enter a suit, or "pass":
-Kunle passes
-Human player Liskov's hand: [0] Nine of Hearts
-Human player Liskov's hand: [1] Ten of Hearts
-Human player Liskov's hand: [2] Queen of Clubs
-Human player Liskov's hand: [3] King of Clubs
-Human player Liskov's hand: [4] Ace of Spades
-Human player Liskov, please enter a suit, or "pass":
-Liskov passes
-Human player Ivan's hand: [0] Nine of Diamonds
-Human player Ivan's hand: [1] Ten of Diamonds
-Human player Ivan's hand: [2] Jack of Hearts
-Human player Ivan's hand: [3] Queen of Hearts
-Human player Ivan's hand: [4] Ace of Clubs
-Human player Ivan, please enter a suit, or "pass":
-Ivan passes
-Human player Judea's hand: [0] Nine of Spades
-Human player Judea's hand: [1] Ten of Spades
-Human player Judea's hand: [2] Jack of Spades
-Human player Judea's hand: [3] King of Hearts
-Human player Judea's hand: [4] Ace of Hearts
-Human player Judea, please enter a suit, or "pass":
-Judea orders up Hearts
+Edsger deals
+Nine of Hearts turned up
+Fran orders up Hearts
 
-Human player Judea's hand: [0] Nine of Spades
-Human player Judea's hand: [1] Ten of Spades
-Human player Judea's hand: [2] Jack of Spades
-Human player Judea's hand: [3] King of Hearts
-Human player Judea's hand: [4] Ace of Hearts
-Human player Judea, please select a card:
-Jack of Spades led by Judea
-Human player Kunle's hand: [0] Nine of Clubs
-Human player Kunle's hand: [1] Ten of Clubs
-Human player Kunle's hand: [2] Jack of Clubs
-Human player Kunle's hand: [3] Queen of Spades
-Human player Kunle's hand: [4] King of Spades
-Human player Kunle, please select a card:
-King of Spades played by Kunle
-Human player Liskov's hand: [0] Nine of Hearts
-Human player Liskov's hand: [1] Ten of Hearts
-Human player Liskov's hand: [2] Queen of Clubs
-Human player Liskov's hand: [3] King of Clubs
-Human player Liskov's hand: [4] Ace of Spades
-Human player Liskov, please select a card:
-Ace of Spades played by Liskov
-Human player Ivan's hand: [0] Nine of Diamonds
-Human player Ivan's hand: [1] Ten of Diamonds
-Human player Ivan's hand: [2] Jack of Hearts
-Human player Ivan's hand: [3] Queen of Hearts
-Human player Ivan's hand: [4] Ace of Clubs
-Human player Ivan, please select a card:
-Nine of Diamonds played by Ivan
-Liskov takes the trick
+King of Clubs led by Fran
+Ace of Clubs played by Gabriel
+Ten of Clubs played by Herb
+Jack of Clubs played by Edsger
+Gabriel takes the trick
 
-Human player Liskov's hand: [0] Nine of Hearts
-Human player Liskov's hand: [1] Ten of Hearts
-Human player Liskov's hand: [2] Queen of Clubs
-Human player Liskov's hand: [3] King of Clubs
-Human player Liskov, please select a card:
-King of Clubs led by Liskov
-Human player Ivan's hand: [0] Ten of Diamonds
-Human player Ivan's hand: [1] Jack of Hearts
-Human player Ivan's hand: [2] Queen of Hearts
-Human player Ivan's hand: [3] Ace of Clubs
-Human player Ivan, please select a card:
-Ace of Clubs played by Ivan
-Human player Judea's hand: [0] Nine of Spades
-Human player Judea's hand: [1] Ten of Spades
-Human player Judea's hand: [2] King of Hearts
-Human player Judea's hand: [3] Ace of Hearts
-Human player Judea, please select a card:
-Nine of Spades played by Judea
-Human player Kunle's hand: [0] Nine of Clubs
-Human player Kunle's hand: [1] Ten of Clubs
-Human player Kunle's hand: [2] Jack of Clubs
-Human player Kunle's hand: [3] Queen of Spades
-Human player Kunle, please select a card:
-Jack of Clubs played by Kunle
-Ivan takes the trick
+King of Spades led by Gabriel
+Ten of Spades played by Herb
+Ace of Spades played by Edsger
+Queen of Spades played by Fran
+Edsger takes the trick
 
-Human player Ivan's hand: [0] Ten of Diamonds
-Human player Ivan's hand: [1] Jack of Hearts
-Human player Ivan's hand: [2] Queen of Hearts
-Human player Ivan, please select a card:
-Ten of Diamonds led by Ivan
-Human player Judea's hand: [0] Ten of Spades
-Human player Judea's hand: [1] King of Hearts
-Human player Judea's hand: [2] Ace of Hearts
-Human player Judea, please select a card:
-Ten of Spades played by Judea
-Human player Kunle's hand: [0] Nine of Clubs
-Human player Kunle's hand: [1] Ten of Clubs
-Human player Kunle's hand: [2] Queen of Spades
-Human player Kunle, please select a card:
-Nine of Clubs played by Kunle
-Human player Liskov's hand: [0] Nine of Hearts
-Human player Liskov's hand: [1] Ten of Hearts
-Human player Liskov's hand: [2] Queen of Clubs
-Human player Liskov, please select a card:
-Queen of Clubs played by Liskov
-Ivan takes the trick
+King of Diamonds led by Edsger
+Nine of Spades played by Fran
+Nine of Clubs played by Gabriel
+Queen of Diamonds played by Herb
+Edsger takes the trick
 
-Human player Ivan's hand: [0] Jack of Hearts
-Human player Ivan's hand: [1] Queen of Hearts
-Human player Ivan, please select a card:
-Jack of Hearts led by Ivan
-Human player Judea's hand: [0] King of Hearts
-Human player Judea's hand: [1] Ace of Hearts
-Human player Judea, please select a card:
-Ace of Hearts played by Judea
-Human player Kunle's hand: [0] Ten of Clubs
-Human player Kunle's hand: [1] Queen of Spades
-Human player Kunle, please select a card:
-Ten of Clubs played by Kunle
-Human player Liskov's hand: [0] Nine of Hearts
-Human player Liskov's hand: [1] Ten of Hearts
-Human player Liskov, please select a card:
-Ten of Hearts played by Liskov
-Ivan takes the trick
+Jack of Spades led by Edsger
+Ace of Hearts played by Fran
+Queen of Hearts played by Gabriel
+Nine of Diamonds played by Herb
+Fran takes the trick
 
-Human player Ivan's hand: [0] Queen of Hearts
-Human player Ivan, please select a card:
-Queen of Hearts led by Ivan
-Human player Judea's hand: [0] King of Hearts
-Human player Judea, please select a card:
-King of Hearts played by Judea
-Human player Kunle's hand: [0] Queen of Spades
-Human player Kunle, please select a card:
-Queen of Spades played by Kunle
-Human player Liskov's hand: [0] Nine of Hearts
-Human player Liskov, please select a card:
-Nine of Hearts played by Liskov
-Judea takes the trick
+Jack of Hearts led by Fran
+Jack of Diamonds played by Gabriel
+King of Hearts played by Herb
+Nine of Hearts played by Edsger
+Fran takes the trick
 
-Ivan and Kunle win the hand
+Edsger and Gabriel win the hand
 euchred!
-Ivan and Kunle have 2 points
-Judea and Liskov have 0 points
+Edsger and Gabriel have 2 points
+Fran and Herb have 0 points
 
 Hand 1
-Judea deals
-Jack of Diamonds turned up
-Human player Kunle's hand: [0] Nine of Spades
-Human player Kunle's hand: [1] Ten of Spades
-Human player Kunle's hand: [2] Jack of Spades
-Human player Kunle's hand: [3] King of Hearts
-Human player Kunle's hand: [4] Ace of Hearts
-Human player Kunle, please enter a suit, or "pass":
-Kunle passes
-Human player Liskov's hand: [0] Nine of Clubs
-Human player Liskov's hand: [1] Ten of Clubs
-Human player Liskov's hand: [2] Jack of Clubs
-Human player Liskov's hand: [3] Queen of Spades
-Human player Liskov's hand: [4] King of Spades
-Human player Liskov, please enter a suit, or "pass":
-Liskov passes
-Human player Ivan's hand: [0] Nine of Hearts
-Human player Ivan's hand: [1] Ten of Hearts
-Human player Ivan's hand: [2] Queen of Clubs
-Human player Ivan's hand: [3] King of Clubs
-Human player Ivan's hand: [4] Ace of Spades
-Human player Ivan, please enter a suit, or "pass":
-Ivan passes
-Human player Judea's hand: [0] Nine of Diamonds
-Human player Judea's hand: [1] Ten of Diamonds
-Human player Judea's hand: [2] Jack of Hearts
-Human player Judea's hand: [3] Queen of Hearts
-Human player Judea's hand: [4] Ace of Clubs
-Human player Judea, please enter a suit, or "pass":
-Judea orders up Diamonds
-Human player Judea's hand: [0] Nine of Diamonds
-Human player Judea's hand: [1] Ten of Diamonds
-Human player Judea's hand: [2] Jack of Hearts
-Human player Judea's hand: [3] Queen of Hearts
-Human player Judea's hand: [4] Ace of Clubs
-Discard upcard: [-1]
-Human player Judea, please select a card to discard:
+Fran deals
+Nine of Diamonds turned up
+Gabriel passes
+Herb passes
+Edsger orders up Diamonds
 
-Human player Kunle's hand: [0] Nine of Spades
-Human player Kunle's hand: [1] Ten of Spades
-Human player Kunle's hand: [2] Jack of Spades
-Human player Kunle's hand: [3] King of Hearts
-Human player Kunle's hand: [4] Ace of Hearts
-Human player Kunle, please select a card:
-Ace of Hearts led by Kunle
-Human player Liskov's hand: [0] Nine of Clubs
-Human player Liskov's hand: [1] Ten of Clubs
-Human player Liskov's hand: [2] Jack of Clubs
-Human player Liskov's hand: [3] Queen of Spades
-Human player Liskov's hand: [4] King of Spades
-Human player Liskov, please select a card:
-Nine of Clubs played by Liskov
-Human player Ivan's hand: [0] Nine of Hearts
-Human player Ivan's hand: [1] Ten of Hearts
-Human player Ivan's hand: [2] Queen of Clubs
-Human player Ivan's hand: [3] King of Clubs
-Human player Ivan's hand: [4] Ace of Spades
-Human player Ivan, please select a card:
-Ten of Hearts played by Ivan
-Human player Judea's hand: [0] Nine of Diamonds
-Human player Judea's hand: [1] Ten of Diamonds
-Human player Judea's hand: [2] Jack of Hearts
-Human player Judea's hand: [3] Jack of Diamonds
-Human player Judea's hand: [4] Ace of Clubs
-Human player Judea, please select a card:
-Ace of Clubs played by Judea
-Kunle takes the trick
+Ace of Clubs led by Gabriel
+Nine of Hearts played by Herb
+Nine of Clubs played by Edsger
+Queen of Clubs played by Fran
+Gabriel takes the trick
 
-Human player Kunle's hand: [0] Nine of Spades
-Human player Kunle's hand: [1] Ten of Spades
-Human player Kunle's hand: [2] Jack of Spades
-Human player Kunle's hand: [3] King of Hearts
-Human player Kunle, please select a card:
-King of Hearts led by Kunle
-Human player Liskov's hand: [0] Ten of Clubs
-Human player Liskov's hand: [1] Jack of Clubs
-Human player Liskov's hand: [2] Queen of Spades
-Human player Liskov's hand: [3] King of Spades
-Human player Liskov, please select a card:
-Ten of Clubs played by Liskov
-Human player Ivan's hand: [0] Nine of Hearts
-Human player Ivan's hand: [1] Queen of Clubs
-Human player Ivan's hand: [2] King of Clubs
-Human player Ivan's hand: [3] Ace of Spades
-Human player Ivan, please select a card:
-Nine of Hearts played by Ivan
-Human player Judea's hand: [0] Nine of Diamonds
-Human player Judea's hand: [1] Ten of Diamonds
-Human player Judea's hand: [2] Jack of Hearts
-Human player Judea's hand: [3] Jack of Diamonds
-Human player Judea, please select a card:
-Nine of Diamonds played by Judea
-Judea takes the trick
+King of Clubs led by Gabriel
+Queen of Hearts played by Herb
+Ace of Hearts played by Edsger
+Jack of Clubs played by Fran
+Gabriel takes the trick
 
-Human player Judea's hand: [0] Ten of Diamonds
-Human player Judea's hand: [1] Jack of Hearts
-Human player Judea's hand: [2] Jack of Diamonds
-Human player Judea, please select a card:
-Jack of Diamonds led by Judea
-Human player Kunle's hand: [0] Nine of Spades
-Human player Kunle's hand: [1] Ten of Spades
-Human player Kunle's hand: [2] Jack of Spades
-Human player Kunle, please select a card:
-Nine of Spades played by Kunle
-Human player Liskov's hand: [0] Jack of Clubs
-Human player Liskov's hand: [1] Queen of Spades
-Human player Liskov's hand: [2] King of Spades
-Human player Liskov, please select a card:
-Jack of Clubs played by Liskov
-Human player Ivan's hand: [0] Queen of Clubs
-Human player Ivan's hand: [1] King of Clubs
-Human player Ivan's hand: [2] Ace of Spades
-Human player Ivan, please select a card:
-Queen of Clubs played by Ivan
-Judea takes the trick
+Queen of Spades led by Gabriel
+Ace of Spades played by Herb
+King of Diamonds played by Edsger
+King of Spades played by Fran
+Edsger takes the trick
 
-Human player Judea's hand: [0] Ten of Diamonds
-Human player Judea's hand: [1] Jack of Hearts
-Human player Judea, please select a card:
-Jack of Hearts led by Judea
-Human player Kunle's hand: [0] Ten of Spades
-Human player Kunle's hand: [1] Jack of Spades
-Human player Kunle, please select a card:
-Ten of Spades played by Kunle
-Human player Liskov's hand: [0] Queen of Spades
-Human player Liskov's hand: [1] King of Spades
-Human player Liskov, please select a card:
-Queen of Spades played by Liskov
-Human player Ivan's hand: [0] King of Clubs
-Human player Ivan's hand: [1] Ace of Spades
-Human player Ivan, please select a card:
-King of Clubs played by Ivan
-Judea takes the trick
+Jack of Hearts led by Edsger
+Nine of Diamonds played by Fran
+Ten of Clubs played by Gabriel
+Jack of Diamonds played by Herb
+Herb takes the trick
 
-Human player Judea's hand: [0] Ten of Diamonds
-Human player Judea, please select a card:
-Ten of Diamonds led by Judea
-Human player Kunle's hand: [0] Jack of Spades
-Human player Kunle, please select a card:
-Jack of Spades played by Kunle
-Human player Liskov's hand: [0] King of Spades
-Human player Liskov, please select a card:
-King of Spades played by Liskov
-Human player Ivan's hand: [0] Ace of Spades
-Human player Ivan, please select a card:
-Ace of Spades played by Ivan
-Judea takes the trick
+Ten of Diamonds led by Herb
+Ace of Diamonds played by Edsger
+Ten of Spades played by Fran
+Jack of Spades played by Gabriel
+Edsger takes the trick
 
-Judea and Liskov win the hand
-Ivan and Kunle have 2 points
-Judea and Liskov have 1 points
+Edsger and Gabriel win the hand
+Edsger and Gabriel have 3 points
+Fran and Herb have 0 points
 
 Hand 2
-Kunle deals
-Jack of Diamonds turned up
-Human player Liskov's hand: [0] Nine of Spades
-Human player Liskov's hand: [1] Ten of Spades
-Human player Liskov's hand: [2] Jack of Spades
-Human player Liskov's hand: [3] King of Hearts
-Human player Liskov's hand: [4] Ace of Hearts
-Human player Liskov, please enter a suit, or "pass":
-Liskov passes
-Human player Ivan's hand: [0] Nine of Clubs
-Human player Ivan's hand: [1] Ten of Clubs
-Human player Ivan's hand: [2] Jack of Clubs
-Human player Ivan's hand: [3] Queen of Spades
-Human player Ivan's hand: [4] King of Spades
-Human player Ivan, please enter a suit, or "pass":
-Ivan passes
-Human player Judea's hand: [0] Nine of Hearts
-Human player Judea's hand: [1] Ten of Hearts
-Human player Judea's hand: [2] Queen of Clubs
-Human player Judea's hand: [3] King of Clubs
-Human player Judea's hand: [4] Ace of Spades
-Human player Judea, please enter a suit, or "pass":
-Judea passes
-Human player Kunle's hand: [0] Nine of Diamonds
-Human player Kunle's hand: [1] Ten of Diamonds
-Human player Kunle's hand: [2] Jack of Hearts
-Human player Kunle's hand: [3] Queen of Hearts
-Human player Kunle's hand: [4] Ace of Clubs
-Human player Kunle, please enter a suit, or "pass":
-Kunle passes
-Human player Liskov's hand: [0] Nine of Spades
-Human player Liskov's hand: [1] Ten of Spades
-Human player Liskov's hand: [2] Jack of Spades
-Human player Liskov's hand: [3] King of Hearts
-Human player Liskov's hand: [4] Ace of Hearts
-Human player Liskov, please enter a suit, or "pass":
-Liskov orders up Hearts
+Gabriel deals
+King of Diamonds turned up
+Herb passes
+Edsger passes
+Fran passes
+Gabriel orders up Diamonds
 
-Human player Liskov's hand: [0] Nine of Spades
-Human player Liskov's hand: [1] Ten of Spades
-Human player Liskov's hand: [2] Jack of Spades
-Human player Liskov's hand: [3] King of Hearts
-Human player Liskov's hand: [4] Ace of Hearts
-Human player Liskov, please select a card:
-Jack of Spades led by Liskov
-Human player Ivan's hand: [0] Nine of Clubs
-Human player Ivan's hand: [1] Ten of Clubs
-Human player Ivan's hand: [2] Jack of Clubs
-Human player Ivan's hand: [3] Queen of Spades
-Human player Ivan's hand: [4] King of Spades
-Human player Ivan, please select a card:
-King of Spades played by Ivan
-Human player Judea's hand: [0] Nine of Hearts
-Human player Judea's hand: [1] Ten of Hearts
-Human player Judea's hand: [2] Queen of Clubs
-Human player Judea's hand: [3] King of Clubs
-Human player Judea's hand: [4] Ace of Spades
-Human player Judea, please select a card:
-Ace of Spades played by Judea
-Human player Kunle's hand: [0] Nine of Diamonds
-Human player Kunle's hand: [1] Ten of Diamonds
-Human player Kunle's hand: [2] Jack of Hearts
-Human player Kunle's hand: [3] Queen of Hearts
-Human player Kunle's hand: [4] Ace of Clubs
-Human player Kunle, please select a card:
-Nine of Diamonds played by Kunle
-Judea takes the trick
+Ace of Clubs led by Herb
+Jack of Clubs played by Edsger
+Queen of Clubs played by Fran
+King of Clubs played by Gabriel
+Herb takes the trick
 
-Human player Judea's hand: [0] Nine of Hearts
-Human player Judea's hand: [1] Ten of Hearts
-Human player Judea's hand: [2] Queen of Clubs
-Human player Judea's hand: [3] King of Clubs
-Human player Judea, please select a card:
-King of Clubs led by Judea
-Human player Kunle's hand: [0] Ten of Diamonds
-Human player Kunle's hand: [1] Jack of Hearts
-Human player Kunle's hand: [2] Queen of Hearts
-Human player Kunle's hand: [3] Ace of Clubs
-Human player Kunle, please select a card:
-Ace of Clubs played by Kunle
-Human player Liskov's hand: [0] Nine of Spades
-Human player Liskov's hand: [1] Ten of Spades
-Human player Liskov's hand: [2] King of Hearts
-Human player Liskov's hand: [3] Ace of Hearts
-Human player Liskov, please select a card:
-Nine of Spades played by Liskov
-Human player Ivan's hand: [0] Nine of Clubs
-Human player Ivan's hand: [1] Ten of Clubs
-Human player Ivan's hand: [2] Jack of Clubs
-Human player Ivan's hand: [3] Queen of Spades
-Human player Ivan, please select a card:
-Jack of Clubs played by Ivan
-Kunle takes the trick
+Ace of Spades led by Herb
+Ten of Spades played by Edsger
+Queen of Spades played by Fran
+King of Spades played by Gabriel
+Herb takes the trick
 
-Human player Kunle's hand: [0] Ten of Diamonds
-Human player Kunle's hand: [1] Jack of Hearts
-Human player Kunle's hand: [2] Queen of Hearts
-Human player Kunle, please select a card:
-Ten of Diamonds led by Kunle
-Human player Liskov's hand: [0] Ten of Spades
-Human player Liskov's hand: [1] King of Hearts
-Human player Liskov's hand: [2] Ace of Hearts
-Human player Liskov, please select a card:
-Ten of Spades played by Liskov
-Human player Ivan's hand: [0] Nine of Clubs
-Human player Ivan's hand: [1] Ten of Clubs
-Human player Ivan's hand: [2] Queen of Spades
-Human player Ivan, please select a card:
-Nine of Clubs played by Ivan
-Human player Judea's hand: [0] Nine of Hearts
-Human player Judea's hand: [1] Ten of Hearts
-Human player Judea's hand: [2] Queen of Clubs
-Human player Judea, please select a card:
-Queen of Clubs played by Judea
-Kunle takes the trick
+Ten of Clubs led by Herb
+Nine of Hearts played by Edsger
+Ten of Hearts played by Fran
+Queen of Diamonds played by Gabriel
+Gabriel takes the trick
 
-Human player Kunle's hand: [0] Jack of Hearts
-Human player Kunle's hand: [1] Queen of Hearts
-Human player Kunle, please select a card:
-Queen of Hearts led by Kunle
-Human player Liskov's hand: [0] King of Hearts
-Human player Liskov's hand: [1] Ace of Hearts
-Human player Liskov, please select a card:
-Ace of Hearts played by Liskov
-Human player Ivan's hand: [0] Ten of Clubs
-Human player Ivan's hand: [1] Queen of Spades
-Human player Ivan, please select a card:
-Ten of Clubs played by Ivan
-Human player Judea's hand: [0] Nine of Hearts
-Human player Judea's hand: [1] Ten of Hearts
-Human player Judea, please select a card:
-Ten of Hearts played by Judea
-Liskov takes the trick
+Jack of Hearts led by Gabriel
+Nine of Spades played by Herb
+Ten of Diamonds played by Edsger
+Jack of Diamonds played by Fran
+Fran takes the trick
 
-Human player Liskov's hand: [0] King of Hearts
-Human player Liskov, please select a card:
-King of Hearts led by Liskov
-Human player Ivan's hand: [0] Queen of Spades
-Human player Ivan, please select a card:
-Queen of Spades played by Ivan
-Human player Judea's hand: [0] Nine of Hearts
-Human player Judea, please select a card:
-Nine of Hearts played by Judea
-Human player Kunle's hand: [0] Jack of Hearts
-Human player Kunle, please select a card:
-Jack of Hearts played by Kunle
-Kunle takes the trick
+Jack of Spades led by Fran
+King of Diamonds played by Gabriel
+Nine of Clubs played by Herb
+Nine of Diamonds played by Edsger
+Gabriel takes the trick
 
-Ivan and Kunle win the hand
+Fran and Herb win the hand
 euchred!
-Ivan and Kunle have 4 points
-Judea and Liskov have 1 points
+Edsger and Gabriel have 3 points
+Fran and Herb have 2 points
 
-Ivan and Kunle win!
+Hand 3
+Herb deals
+Queen of Clubs turned up
+Edsger passes
+Fran passes
+Gabriel passes
+Herb passes
+Edsger orders up Spades
+
+King of Clubs led by Edsger
+Nine of Diamonds played by Fran
+Ace of Clubs played by Gabriel
+Ten of Clubs played by Herb
+Gabriel takes the trick
+
+King of Hearts led by Gabriel
+Queen of Hearts played by Herb
+Nine of Clubs played by Edsger
+Jack of Hearts played by Fran
+Gabriel takes the trick
+
+Queen of Diamonds led by Gabriel
+Ace of Diamonds played by Herb
+Jack of Diamonds played by Edsger
+King of Diamonds played by Fran
+Herb takes the trick
+
+Ten of Diamonds led by Herb
+Ten of Spades played by Edsger
+King of Spades played by Fran
+Nine of Hearts played by Gabriel
+Fran takes the trick
+
+Jack of Clubs led by Fran
+Nine of Spades played by Gabriel
+Jack of Spades played by Herb
+Ace of Spades played by Edsger
+Herb takes the trick
+
+Fran and Herb win the hand
+euchred!
+Edsger and Gabriel have 3 points
+Fran and Herb have 4 points
+
+Hand 4
+Edsger deals
+Queen of Diamonds turned up
+Fran orders up Diamonds
+
+Ten of Clubs led by Fran
+Queen of Clubs played by Gabriel
+King of Clubs played by Herb
+Jack of Clubs played by Edsger
+Herb takes the trick
+
+Ace of Hearts led by Herb
+Ten of Hearts played by Edsger
+Nine of Hearts played by Fran
+Queen of Hearts played by Gabriel
+Herb takes the trick
+
+Ace of Spades led by Herb
+Nine of Clubs played by Edsger
+Ten of Spades played by Fran
+King of Spades played by Gabriel
+Herb takes the trick
+
+Ace of Diamonds led by Herb
+Queen of Diamonds played by Edsger
+Jack of Diamonds played by Fran
+King of Diamonds played by Gabriel
+Fran takes the trick
+
+Jack of Hearts led by Fran
+Jack of Spades played by Gabriel
+Nine of Diamonds played by Herb
+Ten of Diamonds played by Edsger
+Fran takes the trick
+
+Fran and Herb win the hand
+march!
+Edsger and Gabriel have 3 points
+Fran and Herb have 6 points
+
+Hand 5
+Fran deals
+Ace of Diamonds turned up
+Gabriel passes
+Herb passes
+Edsger passes
+Fran passes
+Gabriel orders up Hearts
+
+Jack of Spades led by Gabriel
+Nine of Spades played by Herb
+Queen of Spades played by Edsger
+King of Spades played by Fran
+Fran takes the trick
+
+King of Clubs led by Fran
+Nine of Clubs played by Gabriel
+Queen of Clubs played by Herb
+Ten of Clubs played by Edsger
+Fran takes the trick
+
+Jack of Clubs led by Fran
+Nine of Diamonds played by Gabriel
+Ten of Diamonds played by Herb
+Ten of Spades played by Edsger
+Fran takes the trick
+
+Jack of Diamonds led by Fran
+Jack of Hearts played by Gabriel
+Queen of Hearts played by Herb
+Ten of Hearts played by Edsger
+Gabriel takes the trick
+
+Nine of Hearts led by Gabriel
+Queen of Diamonds played by Herb
+King of Diamonds played by Edsger
+King of Hearts played by Fran
+Fran takes the trick
+
+Fran and Herb win the hand
+euchred!
+Edsger and Gabriel have 3 points
+Fran and Herb have 8 points
+
+Hand 6
+Gabriel deals
+Ten of Hearts turned up
+Herb passes
+Edsger passes
+Fran orders up Hearts
+
+King of Diamonds led by Herb
+Ace of Diamonds played by Edsger
+Nine of Clubs played by Fran
+King of Spades played by Gabriel
+Edsger takes the trick
+
+King of Clubs led by Edsger
+Ace of Clubs played by Fran
+Nine of Hearts played by Gabriel
+Nine of Spades played by Herb
+Gabriel takes the trick
+
+Ace of Hearts led by Gabriel
+Jack of Diamonds played by Herb
+Ten of Diamonds played by Edsger
+Jack of Hearts played by Fran
+Fran takes the trick
+
+Queen of Clubs led by Fran
+Ten of Hearts played by Gabriel
+Nine of Diamonds played by Herb
+Jack of Clubs played by Edsger
+Gabriel takes the trick
+
+Queen of Hearts led by Gabriel
+Jack of Spades played by Herb
+Queen of Diamonds played by Edsger
+King of Hearts played by Fran
+Fran takes the trick
+
+Edsger and Gabriel win the hand
+euchred!
+Edsger and Gabriel have 5 points
+Fran and Herb have 8 points
+
+Hand 7
+Herb deals
+King of Hearts turned up
+Edsger passes
+Fran passes
+Gabriel orders up Hearts
+
+King of Diamonds led by Edsger
+Ace of Diamonds played by Fran
+Queen of Diamonds played by Gabriel
+Ten of Diamonds played by Herb
+Fran takes the trick
+
+King of Spades led by Fran
+Ace of Spades played by Gabriel
+Queen of Spades played by Herb
+Nine of Spades played by Edsger
+Gabriel takes the trick
+
+Jack of Spades led by Gabriel
+Nine of Diamonds played by Herb
+Queen of Clubs played by Edsger
+Ten of Clubs played by Fran
+Gabriel takes the trick
+
+Jack of Diamonds led by Gabriel
+King of Hearts played by Herb
+Nine of Hearts played by Edsger
+Ten of Hearts played by Fran
+Gabriel takes the trick
+
+Ace of Hearts led by Gabriel
+Queen of Hearts played by Herb
+King of Clubs played by Edsger
+Jack of Clubs played by Fran
+Gabriel takes the trick
+
+Edsger and Gabriel win the hand
+Edsger and Gabriel have 6 points
+Fran and Herb have 8 points
+
+Hand 8
+Edsger deals
+Ace of Hearts turned up
+Fran passes
+Gabriel orders up Hearts
+
+King of Clubs led by Fran
+Nine of Clubs played by Gabriel
+Nine of Spades played by Herb
+Ace of Clubs played by Edsger
+Edsger takes the trick
+
+King of Diamonds led by Edsger
+Queen of Diamonds played by Fran
+King of Spades played by Gabriel
+Ace of Diamonds played by Herb
+Herb takes the trick
+
+Queen of Spades led by Herb
+Jack of Clubs played by Edsger
+Nine of Diamonds played by Fran
+Ten of Hearts played by Gabriel
+Gabriel takes the trick
+
+King of Hearts led by Gabriel
+Nine of Hearts played by Herb
+Jack of Diamonds played by Edsger
+Ten of Clubs played by Fran
+Edsger takes the trick
+
+Ace of Hearts led by Edsger
+Queen of Clubs played by Fran
+Queen of Hearts played by Gabriel
+Ten of Spades played by Herb
+Edsger takes the trick
+
+Edsger and Gabriel win the hand
+Edsger and Gabriel have 7 points
+Fran and Herb have 8 points
+
+Hand 9
+Fran deals
+Queen of Spades turned up
+Gabriel passes
+Herb passes
+Edsger passes
+Fran orders up Spades
+
+Ace of Diamonds led by Gabriel
+Jack of Diamonds played by Herb
+Nine of Diamonds played by Edsger
+Queen of Clubs played by Fran
+Gabriel takes the trick
+
+King of Diamonds led by Gabriel
+Ten of Diamonds played by Herb
+Ten of Hearts played by Edsger
+Queen of Spades played by Fran
+Fran takes the trick
+
+Jack of Clubs led by Fran
+Nine of Clubs played by Gabriel
+Queen of Hearts played by Herb
+Jack of Hearts played by Edsger
+Fran takes the trick
+
+Ace of Spades led by Fran
+Ten of Clubs played by Gabriel
+King of Hearts played by Herb
+King of Clubs played by Edsger
+Fran takes the trick
+
+King of Spades led by Fran
+Queen of Diamonds played by Gabriel
+Ace of Hearts played by Herb
+Ace of Clubs played by Edsger
+Fran takes the trick
+
+Fran and Herb win the hand
+Edsger and Gabriel have 7 points
+Fran and Herb have 9 points
+
+Hand 10
+Gabriel deals
+Ace of Clubs turned up
+Herb passes
+Edsger passes
+Fran passes
+Gabriel passes
+Herb passes
+Edsger orders up Spades
+
+Ace of Diamonds led by Herb
+Ten of Diamonds played by Edsger
+King of Diamonds played by Fran
+Queen of Diamonds played by Gabriel
+Herb takes the trick
+
+Queen of Clubs led by Herb
+Nine of Hearts played by Edsger
+Ten of Clubs played by Fran
+Nine of Diamonds played by Gabriel
+Herb takes the trick
+
+Jack of Diamonds led by Herb
+Ace of Hearts played by Edsger
+King of Hearts played by Fran
+Queen of Hearts played by Gabriel
+Herb takes the trick
+
+Ten of Hearts led by Herb
+Queen of Spades played by Edsger
+Ace of Spades played by Fran
+Ten of Spades played by Gabriel
+Fran takes the trick
+
+Jack of Spades led by Fran
+King of Spades played by Gabriel
+Nine of Clubs played by Herb
+Jack of Clubs played by Edsger
+Fran takes the trick
+
+Fran and Herb win the hand
+euchred!
+Edsger and Gabriel have 7 points
+Fran and Herb have 11 points
+
+Fran and Herb win!
