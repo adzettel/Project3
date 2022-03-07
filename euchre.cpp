@@ -83,7 +83,7 @@ int main(int argc, char *argv[]){
         return -1;
     }
     game.setupGame(argv); //reads in players 
-    //does game until there is a winner
+    //does game until thfere is a winner
     while(game.checkForWin()==0) {game.doRound();} 
     if (game.checkForWin() == 1) {
         cout << argv[4] << " and " << argv[8];
@@ -164,7 +164,7 @@ void Game::setDealOrder(){
 }
 
 void Game::shuffle7(){
-    for (int i = 0; i < 7; ++i){deck.shuffle();}
+    deck.shuffle();
 }
 
 string Game::makeTrump(){
