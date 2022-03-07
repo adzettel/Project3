@@ -16,7 +16,7 @@ Pack::Pack(std::istream& pack_input){
     for (int i = 0; i < 24; i++)
     {
         pack_input >> rank;
-        pack_input >> of; // idk
+        pack_input >> of; // idk - removes "of" in the string
         pack_input >> suit;
         cards[i] = Card(rank, suit);
     }
@@ -24,13 +24,19 @@ Pack::Pack(std::istream& pack_input){
 }
 
 Pack::Pack(){
-    string s = "Nine of Spades\nTen of Spades\nJack of Spades\nQueen of Spades\nKing of Spades\nAce of Spades\nNine of Hearts\nTen of Hearts\nJack of Hearts\nQueen of Hearts\nKing of Hearts\nAce of Hearts\nNine of Clubs\nTen of Clubs\nJack of Clubs\nQueen of Clubs\nKing of Clubs\nAce of Clubs\nNine of Diamonds\nTen of Diamonds\nJack of Diamonds\nQueen of Diamonds\nKing of Diamonds\nAce of Diamonds";
+    string s = "Nine Spades\nTen Spades\nJack Spades\nQueen Spades\nKing Spades\n"
+    "Ace Spades\n"
+    "Nine Hearts\nTen Hearts\nJack Hearts\nQueen Hearts\nKing Hearts\nAce Hearts\n"
+    "Nine Clubs\nTen Clubs\nJack Clubs\nQueen Clubs\nKing Clubs\nAce Clubs\n"
+    "Nine Diamonds\nTen Diamonds\nJack Diamonds\nQueen Diamonds\nKing Diamonds\n"
+    "Ace Diamonds";
+    
     istringstream pack_input(s);
     string rank, of, suit;
     for (int i = 0; i < 24; i++)
     {
         pack_input >> rank;
-        pack_input >> of; // idk
+        // pack_input >> of; // idk - removes "of" in the string
         pack_input >> suit;
         cards[i] = Card(rank, suit);
     }
