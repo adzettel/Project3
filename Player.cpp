@@ -50,8 +50,8 @@ class SimplePlayer : public Player{
 
         void add_and_discard(const Card &upcard) {
             assert(cards.size() > 1); // makes no sense
-            cards.erase(cards.begin() + lowest_card());
             cards.push_back(upcard);
+            cards.erase(cards.begin() + lowest_card(upcard.get_suit()));
         }
 
         Card lead_card(const std::string &trump) {
@@ -64,9 +64,9 @@ class SimplePlayer : public Player{
         Card play_card(const Card &led_card, const std::string &trump) {
             int p;
             if (has_suit(led_card.get_suit())) {
-                p = highest_card_suit(led_card.get_suit());
+                p = highest_card_suit(led_card.get_suit(), trump);
             } else {
-                p = lowest_card();
+                p = lowest_card(trump);
             }
             Card output = cards.at(p);
             cards.erase(cards.begin() + p);
@@ -91,14 +91,25 @@ class SimplePlayer : public Player{
             vector<string> s;
             s.push_back(trump);
             vector<Card> f = filter(s, true);
-            return range_card(f, true);
+            if (f.size() == 0) return highest_card(trump); // only trumps
+            return findIndex(f.at(range_card(f, true, trump)));
         }
 
-        int highest_card_suit(const string suit) const {
+        int highest_card_suit(const string suit, const string trump) const {
             vector<string> s;
             s.push_back(suit);
             vector<Card> f = filter(s, false);
-            return range_card(f, true);
+            return findIndex(f.at(range_card(f, true, trump)));
+        }
+
+        int findIndex(const Card &look) const {
+            for (size_t i = 0; i < cards.size(); i++)
+            {
+                if (look == cards.at(i)) {
+                    return i;
+                }
+            }
+            throw "card not found";
         }
 
         bool has_suit(string suit) {
@@ -110,14 +121,14 @@ class SimplePlayer : public Player{
             return false;
         }
 
-        int range_card(const vector<Card> input, const bool sortHigh) const {
+        int range_card(const vector<Card> input, const bool sortHigh, string trump) const {
             if (input.size() == 1) 
                 return 0;
             Card c = input.at(0);
             int l = 0;
             for (size_t i = 0; i < input.size(); i++)
             {
-                if (sortHigh ? (c < input.at(i)) : (c > input.at(i))) {
+                if (sortHigh ? (Card_less(c,input.at(i),trump)) : Card_less(input.at(i),c,trump)) {
                     l = i;
                     c = input.at(i);
                 }
@@ -125,18 +136,18 @@ class SimplePlayer : public Player{
             return l;
         }
 
-        int highest_card() const {
-            return range_card(cards, true);
+        int highest_card(string trump) const {
+            return range_card(cards, true, trump);
         }
 
-        int lowest_card() const {
-            return range_card(cards, false);
+        int lowest_card(string trump) const {
+            return range_card(cards, false, trump);
         }
 
         vector<Card> filter(const vector<string> suits, const bool flip) const {
             assert(suits.size() >= 1);
             vector<Card> o;
-            for (int i = 0; i < cards.size(); i++)
+            for (size_t i = 0; i < cards.size(); i++)
             {
                 bool pass = false;
                 for (size_t x = 0; x < suits.size(); x++)
@@ -206,6 +217,7 @@ class HumanPlayer : public Player{
         }
 
         Card lead_card(const std::string &trump) {
+            assert(cards.size() > 0);
             printHand();
             cout << "Human player " << name << ", please select a card:" << endl; 
             int p;
@@ -237,38 +249,6 @@ class HumanPlayer : public Player{
             {
                 cout << "Human player " << name << "'s hand: [" << i << "] " << copy[i] << endl;
             }
-        }
-
-        int range_card(const vector<Card> input, const bool sortHigh) const {
-            if (input.size() == 1) 
-                return 0;
-            Card c = input.at(0);
-            int l = 0;
-            for (size_t i = 0; i < input.size(); i++)
-            {
-                if (sortHigh ? (c < input.at(i)) : (c > input.at(i))) {
-                    l = i;
-                    c = input.at(i);
-                }
-            }
-            return l;
-        }
-
-        vector<Card> filter(const vector<string> suits, const bool flip) const {
-            assert(suits.size() >= 1);
-            vector<Card> o;
-            for (int i = 0; i < cards.size(); i++)
-            {
-                bool pass = false;
-                for (size_t x = 0; x < suits.size(); x++)
-                {
-                    if (flip ? cards[i].get_suit() != suits[x] : cards[i].get_suit() == suits[x]) 
-                        pass = true;
-                }
-                if (pass)
-                    o.push_back(cards[i]);
-            }
-            return o;
         }
 };
 
