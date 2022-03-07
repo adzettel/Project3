@@ -35,6 +35,7 @@ class Game{
      //returns 1 if t1 wins, 2 if t2 wins, 0 if no win
     int checkForWin();
     
+    void deleteGame();
     
     private: 
     //main variables - are not reset after each round
@@ -92,7 +93,9 @@ int main(int argc, char *argv[]){
     if (game.checkForWin() == 2) {
         cout << argv[6] << " and " << argv[10];
         cout << " win!" << endl << endl;
-        }
+    }
+    delete &game;
+    return 0;
 }
 
 void Game::setupGame(char* argv[]){

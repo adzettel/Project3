@@ -186,20 +186,32 @@ std::ostream & operator<<(std::ostream &os, const Card &card){
   return os; 
 }
 
+
+int duplicate(const Card &a, const Card &b, const std::string &trump){
+
+//trump against non trump comparison
+  if (a.is_trump(trump) && !(b.is_trump(trump))) return 0;
+  if (!a.is_trump(trump) && (b.is_trump(trump))) return 1;
+
+//bower comparison
+  if (b.is_right_bower(trump)) return 1;
+  if (a.is_right_bower(trump)) return 0;
+  if (b.is_left_bower(trump) && !(a.is_left_bower(trump))) return 1;
+  if (a.is_left_bower(trump)) return 0;
+
+  return 2;
+
+}
+
+
+
 //REQUIRES trump is a valid suit
 //EFFECTS Returns true if a is lower value than b.  Uses trump to determine
 // order, as described in the spec.
 bool Card_less(const Card &a, const Card &b, const std::string &trump){
 
-//trump against non trump comparison
-  if (a.is_trump(trump) && !(b.is_trump(trump))) return false;
-  if (!a.is_trump(trump) && (b.is_trump(trump))) return true;
-
-//bower comparison
-  if (b.is_right_bower(trump)) return true;
-  if (a.is_right_bower(trump)) return false;
-  if (b.is_left_bower(trump) && !(a.is_left_bower(trump))) return true;
-  if (a.is_left_bower(trump)) return false;
+  int test = duplicate(a, b, trump);
+  if (test != 2) return test;
 
 //regular comparison
   if (find_rank_weight(a) > find_rank_weight(b)) return false;
@@ -214,14 +226,18 @@ bool Card_less(const Card &a, const Card &b, const std::string &trump){
 //  and the suit led to determine order, as described in the spec.
 bool Card_less(const Card &a, const Card &b, const Card &led_card, 
                                             const std::string &trump){
-const std::string led_suit = led_card.get_suit();
+  const std::string led_suit = led_card.get_suit();
+  int test = duplicate(a, b, trump);
+  if (test != 2) return test;
 
 //led suit comparison
   if (a.get_suit() == led_suit && b.get_suit() != led_suit) return false;
   if (a.get_suit() != led_suit && b.get_suit() == led_suit) return true;
 
-  return Card_less(a, b, trump);
+//regular comparison - accounts for both trump, both led suit, and both non lead suit
+  if (find_rank_weight(a) > find_rank_weight(b)) return false;
+  if (find_rank_weight(b) > find_rank_weight(a)) return true;
+  else return (find_suit_weight(b) > find_suit_weight(a));
+  
   
 }
-
-
