@@ -216,25 +216,11 @@ bool Card_less(const Card &a, const Card &b, const Card &led_card,
                                             const std::string &trump){
 const std::string led_suit = led_card.get_suit();
 
-//trump against non trump comparison
-  if (a.is_trump(trump) && !(b.is_trump(trump))) return false;
-  if (!a.is_trump(trump) && (b.is_trump(trump))) return true;
-
-//bower comparison
-  if (b.is_right_bower(trump)) return true;
-  if (a.is_right_bower(trump)) return false;
-  if (b.is_left_bower(trump) && !(a.is_left_bower(trump))) return true;
-  if (a.is_left_bower(trump)) return false;
-
-//led suit comparison
+  //led suit comparison
   if (a.get_suit() == led_suit && b.get_suit() != led_suit) return false;
   if (a.get_suit() != led_suit && b.get_suit() == led_suit) return true;
 
-//regular comparison - accounts for both trump, both led suit, and both non lead suit
-   if (find_rank_weight(a) > find_rank_weight(b)) return false;
-  if (find_rank_weight(b) > find_rank_weight(a)) return true;
-  else return (find_suit_weight(b) > find_suit_weight(a));
-  
+  return Card_less(a, b, trump);
   
 }
 
