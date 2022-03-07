@@ -216,7 +216,7 @@ bool Card_less(const Card &a, const Card &b, const Card &led_card,
                                             const std::string &trump){
 const std::string led_suit = led_card.get_suit();
 
-//led suit comparison
+  //led suit comparison
   if (a.get_suit() == led_suit && b.get_suit() != led_suit) return false;
   if (a.get_suit() != led_suit && b.get_suit() == led_suit) return true;
 
