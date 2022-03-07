@@ -11,6 +11,8 @@ using namespace std;
 
 // add any necessary #include or using directives here
 
+// add any necessary #include or using directives here
+
 Pack::Pack(std::istream& pack_input){
     string rank, of, suit;
     for (int i = 0; i < 24; i++)
@@ -44,7 +46,7 @@ Pack::Pack(){
 }
 
 Card Pack::deal_one() {
-    assert(next != 23);
+assert(next != 24);
     next++;
     return cards[next - 1];
 }
@@ -55,17 +57,21 @@ void Pack::reset() {
 
 void Pack::shuffle() {
     reset();
-    std::array<Card, PACK_SIZE> temp;
-    for (int i = 0; i < 24; i++)
+    for (int i = 0; i < 7; i++)
     {
-        if (i < 12)
-            temp[2*i + 1] = cards[i];
-        else
-            temp[2*(i - 12)] = cards[i];
+        std::array<Card, PACK_SIZE> temp;
+        for (int i = 0; i < 24; i++)
+        {
+            if (i < 12)
+                temp[2*i + 1] = cards[i];
+            else
+                temp[2*(i - 12)] = cards[i];
+        }
+        cards = temp;
     }
-    cards = temp;
 }
 
 bool Pack::empty() const {
-    return next == 23;
+    // cout << "check if empty, next is " << next << endl;
+    return next == 24;
 }
