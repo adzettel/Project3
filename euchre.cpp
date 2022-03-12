@@ -34,6 +34,7 @@ class Game{
     void doRound(); 
      //returns 1 if t1 wins, 2 if t2 wins, 0 if no win
     int checkForWin();
+    void deletePlayers();
     
     
     private: 
@@ -76,6 +77,7 @@ int main(int argc, char *argv[]){
     for (int i = 0; i < argc; i++){
         cout << argv[i] << " ";
     }
+    
     cout << endl;
     Game game;
     if (!game.setPack(argv)) { //reads in pack
@@ -93,6 +95,7 @@ int main(int argc, char *argv[]){
         cout << argv[6] << " and " << argv[10];
         cout << " win!" << endl << endl;
         }
+        game.deletePlayers();
 }
 
 void Game::setupGame(char* argv[]){
@@ -274,7 +277,16 @@ void Game::doRound(){
 int Game::checkForWin(){
     if(t1Points>=pointsToWin) return 1;
     if(t2Points>=pointsToWin) return 2;
-    else return 0;
+    else {
+        return 0;
+    }
+}
+
+void Game::deletePlayers(){
+    delete p0;
+    delete p1;
+    delete p2;
+    delete p3;
 }
 
 bool failedPrelimChecks(int argc, char *argv[]){

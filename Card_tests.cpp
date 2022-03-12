@@ -14,61 +14,91 @@ TEST(test_card_ctor) {
     ASSERT_EQUAL(Card::SUIT_HEARTS, c.get_suit());
 }
 
-// Tests a bower's rank and suit and the bool functions
-TEST(test_bower) {
-    Card c(Card::RANK_JACK, Card::SUIT_CLUBS);
-    ASSERT_EQUAL(Card::RANK_JACK, c.get_rank());
-    ASSERT_EQUAL(Card::SUIT_SPADES,c.get_suit(Card::SUIT_SPADES));
-    ASSERT_EQUAL(Card::SUIT_CLUBS, c.get_suit());
-
-    ASSERT_TRUE(c.is_face());
-
-    ASSERT_TRUE(c.is_left_bower(Card::SUIT_SPADES));
-    ASSERT_TRUE(!c.is_left_bower(Card::SUIT_CLUBS));
-
-    ASSERT_TRUE(c.is_right_bower(Card::SUIT_CLUBS));
-    ASSERT_TRUE(!c.is_right_bower(Card::SUIT_SPADES));
+TEST(operator_minimums){
+    Card nineSpades(Card::RANK_NINE, Card::SUIT_SPADES);
+    Card nineDiamonds(Card::RANK_NINE, Card::SUIT_DIAMONDS);
+    ASSERT_TRUE(nineSpades < nineDiamonds);
+    ASSERT_TRUE(nineSpades <= nineDiamonds);
+    ASSERT_FALSE(nineSpades > nineDiamonds);
+    ASSERT_FALSE(nineSpades >= nineDiamonds);
+    ASSERT_TRUE(nineSpades != nineDiamonds);
+    ASSERT_FALSE(nineSpades == nineDiamonds);
+}
+TEST(operator_maximums){
+    Card aceDiamonds(Card::RANK_ACE, Card::SUIT_DIAMONDS);
+    ASSERT_FALSE(aceDiamonds > aceDiamonds);
+    ASSERT_TRUE(aceDiamonds >= aceDiamonds);
+    ASSERT_FALSE(aceDiamonds < aceDiamonds);
+    ASSERT_TRUE(aceDiamonds <= aceDiamonds);
+    ASSERT_FALSE(aceDiamonds != aceDiamonds);
+    ASSERT_TRUE(aceDiamonds == aceDiamonds);
+}
+TEST(suit_next){
+    Card nineSpades(Card::RANK_NINE, Card::SUIT_SPADES);
+    Card nineDiamonds(Card::RANK_NINE, Card::SUIT_DIAMONDS);
+    Card nineClubs(Card::RANK_NINE, Card::SUIT_CLUBS);
+    Card nineHearts(Card::RANK_NINE, Card::SUIT_HEARTS);
+    ASSERT_EQUAL(Suit_next(nineSpades.get_suit()), "Clubs");
+    ASSERT_EQUAL(Suit_next(nineClubs.get_suit()), "Spades");
+    ASSERT_EQUAL(Suit_next(nineDiamonds.get_suit()), "Hearts");
+    ASSERT_EQUAL(Suit_next(nineHearts.get_suit()), "Diamonds");
 }
 
-TEST(test_comparisons){
 
+
+
+//get.suit(trump), get.face, is_left_bower, is_right_bower, is_trump 
+TEST(getSuitFace){
+    Card jackHearts(Card::RANK_JACK,Card::SUIT_HEARTS);
+    Card nineSpades(Card::RANK_NINE,Card::SUIT_SPADES);
+
+    ASSERT_EQUAL(nineSpades.get_suit(), Card::SUIT_SPADES);
+    ASSERT_EQUAL(nineSpades.get_suit(Card::SUIT_CLUBS), Card::SUIT_SPADES);
+
+    ASSERT_EQUAL(jackHearts.get_suit(), Card::SUIT_HEARTS);
+    ASSERT_EQUAL(jackHearts.get_suit(Card::SUIT_DIAMONDS), Card::SUIT_DIAMONDS);
+    ASSERT_EQUAL(jackHearts.get_suit(Card::SUIT_HEARTS), Card::SUIT_HEARTS);
+
+
+    ASSERT_TRUE(jackHearts.is_trump(Card::SUIT_HEARTS) && jackHearts.is_trump(Card::SUIT_DIAMONDS));
+    ASSERT_FALSE(jackHearts.is_trump(Card::SUIT_CLUBS));
+    ASSERT_FALSE(jackHearts.is_trump(Card::SUIT_SPADES));
+
+    ASSERT_TRUE(jackHearts.is_left_bower(Card::SUIT_DIAMONDS));
+    ASSERT_FALSE(jackHearts.is_left_bower(Card::SUIT_HEARTS));
+    ASSERT_FALSE(jackHearts.is_left_bower(Card::SUIT_HEARTS));
+    ASSERT_FALSE(nineSpades.is_left_bower(Card::SUIT_HEARTS));
+    ASSERT_FALSE(nineSpades.is_right_bower(Card::SUIT_SPADES));
+    ASSERT_FALSE(jackHearts.is_left_bower(Card::SUIT_DIAMONDS) && jackHearts.is_right_bower(Card::SUIT_DIAMONDS));
+
+    ASSERT_TRUE(jackHearts.is_face());
+    ASSERT_FALSE(nineSpades.is_face());
+}
+
+//Card_less(led, trump), Card_less(trump), find_rank_weight, find_suit_weight
+TEST(Card_less){
+    Card nineDiamonds(Card::RANK_NINE, Card::SUIT_DIAMONDS);
+    Card nineSpades(Card::RANK_NINE, Card::SUIT_SPADES);
+    Card jackHearts(Card::RANK_JACK, Card::SUIT_HEARTS);
     Card aceClubs(Card::RANK_ACE, Card::SUIT_CLUBS);
-    Card queenDiamonds(Card::RANK_QUEEN, Card::SUIT_DIAMONDS);
-    Card twoSpades(Card::RANK_TWO, Card::SUIT_SPADES);
-    Card jackClubs(Card::RANK_JACK, Card::SUIT_CLUBS);
-    Card jackSpades(Card::RANK_JACK, Card::SUIT_SPADES);
 
-    //operator comparisons
-    ASSERT_TRUE(aceClubs > queenDiamonds);
-    ASSERT_TRUE(queenDiamonds < aceClubs);
-    ASSERT_TRUE(jackClubs == jackClubs);
-    ASSERT_TRUE(jackClubs <= jackSpades);
-    ASSERT_TRUE(jackClubs >= jackSpades);
-    ASSERT_TRUE(jackSpades != aceClubs);
+    ASSERT_TRUE(Card_less(aceClubs, jackHearts, Card::SUIT_DIAMONDS));
+    ASSERT_TRUE(Card_less(aceClubs, jackHearts, Card::SUIT_HEARTS));
+    ASSERT_TRUE(Card_less(nineSpades, nineDiamonds, Card::SUIT_HEARTS));
+    ASSERT_FALSE(Card_less(nineSpades, nineSpades, Card::SUIT_SPADES));
 
-
-    //non trump against non trump
-    ASSERT_TRUE(Card_less(queenDiamonds,aceClubs,Card::SUIT_HEARTS));
-
-    //trump against non trump
-    ASSERT_TRUE(Card_less(aceClubs,queenDiamonds,Card::SUIT_DIAMONDS));
-
-    //trump against trump (left vs right)
-    ASSERT_TRUE(Card_less(jackSpades,jackClubs,queenDiamonds,Card::SUIT_CLUBS));
-    
-    //trump against non-lead card
-    ASSERT_TRUE(Card_less(aceClubs,queenDiamonds,twoSpades,Card::SUIT_DIAMONDS));
-
-    //non trump against lead card
-    ASSERT_TRUE(Card_less(aceClubs, twoSpades, twoSpades, Card::SUIT_DIAMONDS));
+    ASSERT_TRUE(Card_less(aceClubs, jackHearts, nineSpades, Card::SUIT_DIAMONDS));
+    ASSERT_TRUE(Card_less(aceClubs, jackHearts, nineSpades, Card::SUIT_HEARTS));
+    ASSERT_TRUE(Card_less(nineSpades, nineDiamonds, aceClubs, Card::SUIT_HEARTS));
+    ASSERT_FALSE(Card_less(nineSpades, nineSpades, nineSpades, Card::SUIT_SPADES));
 }
 
+//print operator
 TEST(test_print){
     ostringstream oss;
     Card aceSpades(Card::RANK_ACE, Card::SUIT_SPADES);
     oss << aceSpades;
     ASSERT_EQUAL(oss.str(),"Ace of Spades");
-
 }
 
 TEST_MAIN()

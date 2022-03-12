@@ -64,7 +64,7 @@ class SimplePlayer : public Player{
         Card play_card(const Card &led_card, const std::string &trump) {
             int p;
             if (has_suit(led_card.get_suit(trump),trump)) {
-                p = highest_card_suit(led_card.get_suit(trump), trump); // accounted for suit of led card based on trump
+                p = highest_card_suit(led_card.get_suit(trump), trump); 
             } else {
                 p = lowest_card(trump);
             }
@@ -81,7 +81,8 @@ class SimplePlayer : public Player{
             int count = 0;
             for (size_t i = 0; i < cards.size(); i++)
             {
-                if (cards[i].is_left_bower(suit) || (cards[i].is_trump(suit) && cards[i].is_face()))
+                if (cards[i].is_left_bower(suit) || 
+                (cards[i].is_trump(suit) && cards[i].is_face()))
                     count++;
             }
             return count;
@@ -121,14 +122,16 @@ class SimplePlayer : public Player{
             return false;
         }
 
-        int range_card(const vector<Card> input, const bool sortHigh, string trump) const {
+        int range_card(const vector<Card> input, const bool sortHigh, 
+        string trump) const {
             if (input.size() == 1) 
                 return 0;
             Card c = input.at(0);
             int l = 0;
             for (size_t i = 0; i < input.size(); i++)
             {
-                if (sortHigh ? (Card_less(c,input.at(i),trump)) : Card_less(input.at(i),c,trump)) {
+                if (sortHigh ? (Card_less(c,input.at(i),trump)) :
+                 Card_less(input.at(i),c,trump)) {
                     l = i;
                     c = input.at(i);
                 }
@@ -144,7 +147,8 @@ class SimplePlayer : public Player{
             return range_card(cards, false, trump);
         }
 
-        vector<Card> filter(const vector<string> suits, const bool flip, const string trump) const {
+        vector<Card> filter(const vector<string> suits, const bool flip, 
+        const string trump) const {
             assert(suits.size() >= 1);
             vector<Card> o;
             for (size_t i = 0; i < cards.size(); i++)
@@ -152,7 +156,8 @@ class SimplePlayer : public Player{
                 bool pass = false;
                 for (size_t x = 0; x < suits.size(); x++)
                 {
-                    if (flip ? cards[i].get_suit(trump) != suits[x] : cards[i].get_suit(trump) == suits[x])  // checked to see if was bower
+                    if (flip ? cards[i].get_suit(trump) != suits[x] : 
+                    cards[i].get_suit(trump) == suits[x])  // checked to see if was bower
                         pass = true;
                 }
                 if (pass)
@@ -187,7 +192,8 @@ class HumanPlayer : public Player{
             printHand();
             string input;
             string suit = upcard.get_suit();
-            cout << "Human player " << name << ", please enter a suit, or \"pass\":" << endl;
+            cout << "Human player " << name << ", please enter a suit,"
+            " or \"pass\":" << endl;
             cin >> input;
             if (round == 1) {
                 if (input != "pass" && input == suit) {
@@ -208,7 +214,8 @@ class HumanPlayer : public Player{
             printHand();
             sort(cards.begin(),cards.end()); //sorted hand to match what was printed
             cout << "Discard upcard: [-1]" << endl;
-            cout<< "Human player " << name << ", please select a card to discard:" << endl;
+            cout<< "Human player " << name << ", please select a card to discard:"
+             << endl;
             int p = -1;
             cin >> p;
             if (p >= 0) {
@@ -250,7 +257,8 @@ class HumanPlayer : public Player{
             sort(copy.begin(), copy.end());
             for (size_t i = 0; i < copy.size(); i++)
             {
-                cout << "Human player " << name << "'s hand: [" << i << "] " << copy[i] << endl;
+                cout << "Human player " << name << "'s hand: [" << i << "] " << copy[i]
+                 << endl;
             }
         }
 };
