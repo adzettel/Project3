@@ -31,10 +31,25 @@ TEST(test_player_insertion) {
   delete alice;
 }
 
+
+
 TEST(test_player_get_name) {
   // Create a player and verify that get_name() returns the player's name
   Player * alice = Player_factory("Alice", "Simple");
   ASSERT_EQUAL(alice->get_name(), "Alice");
+  delete alice;
+}
+
+TEST(test_player_get_name2) {
+  // Create a player and verify that get_name() returns the player's name
+  Player * alice = Player_factory("Alice", "Human");
+  ASSERT_EQUAL(alice->get_name(), "Alice");
+  delete alice;
+}
+
+TEST(test_player_factory) {
+  // Create a player and verify that get_name() returns the player's name
+  Player * alice = Player_factory("Alice", "Human");
   delete alice;
 }
 
@@ -45,7 +60,7 @@ TEST(test_simple_player_make_trump) {
   bob->add_card(Card(Card::RANK_TEN, Card::SUIT_SPADES));
   bob->add_card(Card(Card::RANK_QUEEN, Card::SUIT_SPADES));
   bob->add_card(Card(Card::RANK_KING, Card::SUIT_SPADES));
-  bob->add_card(Card(Card::RANK_ACE, Card::SUIT_SPADES));
+  bob->add_card(Card(Card::RANK_ACE, Card::SUIT_HEARTS));
 
   // Bob makes tump
   Card nine_spades(Card::RANK_NINE, Card::SUIT_SPADES);
@@ -60,7 +75,7 @@ TEST(test_simple_player_make_trump) {
   // Verify Bob's order up and trump suit
   ASSERT_TRUE(orderup);
   ASSERT_EQUAL(trump, Card::SUIT_SPADES);
-
+  ASSERT_FALSE(bob->make_trump(Card(Card::RANK_ACE, Card::SUIT_HEARTS), false, 1, trump));
   delete bob;
 }
 
@@ -161,6 +176,46 @@ TEST(test_simple_player_play_card) {
 
   // Verify the card Bob played
   ASSERT_EQUAL(card_played, Card(Card::RANK_NINE, Card::SUIT_SPADES));
+  delete bob;
+}
+
+TEST(test_simple_player_play_card3) {
+  // Bob's hand
+  Player * bob = Player_factory("Bob", "Simple");
+  bob->add_card(Card(Card::RANK_NINE, Card::SUIT_HEARTS));
+  bob->add_card(Card(Card::RANK_TEN, Card::SUIT_CLUBS));
+  bob->add_card(Card(Card::RANK_QUEEN, Card::SUIT_CLUBS));
+  bob->add_card(Card(Card::RANK_KING, Card::SUIT_SPADES));
+  bob->add_card(Card(Card::RANK_ACE, Card::SUIT_SPADES));
+
+  // Bob plays a card
+  bob->add_and_discard(Card(Card::RANK_NINE, Card::SUIT_SPADES));
+  Card led = bob->lead_card(Card::SUIT_SPADES);
+
+  // Verify the card Bob played
+  Card highest_nontrump(Card::RANK_QUEEN, Card::SUIT_CLUBS);
+  ASSERT_EQUAL(led, highest_nontrump);
+  delete bob;
+}
+
+TEST(test_simple_player_play_card2) {
+  // Bob's hand
+  Player * bob = Player_factory("Bob", "Simple");
+  bob->add_card(Card(Card::RANK_NINE, Card::SUIT_HEARTS));
+  bob->add_card(Card(Card::RANK_NINE, Card::SUIT_HEARTS));
+  bob->add_card(Card(Card::RANK_NINE, Card::SUIT_HEARTS));
+  bob->add_card(Card(Card::RANK_NINE, Card::SUIT_HEARTS));
+  bob->add_card(Card(Card::RANK_NINE, Card::SUIT_HEARTS));
+
+  // Bob plays a card
+  Card nine_diamonds(Card::RANK_NINE, Card::SUIT_DIAMONDS);
+  Card card_played = bob->play_card(
+    nine_diamonds,  // Nine of Diamonds is led
+    "Hearts"        // Trump suit
+  ); 
+
+  // Verify the card Bob played
+  ASSERT_EQUAL(card_played, Card(Card::RANK_NINE, Card::SUIT_HEARTS));
   delete bob;
 }
 
